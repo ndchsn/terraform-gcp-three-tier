@@ -1,9 +1,9 @@
 output "network_name" {
-  value = google_compute_network.vpc.name
+  value = local.network_name_real
 }
 
 output "network_self_link" {
-  value = google_compute_network.vpc.self_link
+  value = local.network_self_link
 }
 
 output "subnet_self_links" {
@@ -19,5 +19,5 @@ output "svcs_range_name" {
 }
 
 output "psc_sql_range_name" {
-  value = google_compute_global_address.psc_sql_range.name
+  value = local.psc_sql_range_name_effective
 }

@@ -10,6 +10,11 @@ module "network" {
   region       = var.region
   network_name = var.network_name
 
+  # Manage or consume the VPC
+  create_network    = var.network_create_network
+  manage_router_nat = var.network_manage_router_nat
+  manage_psc        = var.network_manage_psc
+
   subnets = [
     { name = local.subnet_web_name, ip_cidr_range = var.tier_cidrs.web, region = var.region },
     { name = local.subnet_app_name, ip_cidr_range = var.tier_cidrs.app, region = var.region },
@@ -49,6 +54,7 @@ module "sql" {
   region               = var.region
   network_self_link    = module.network.network_self_link
   allocated_range_name = module.network.psc_sql_range_name
+  manage_connection    = var.network_manage_psc
 
   instance_name     = var.sql.instance_name
   database_version  = var.sql.database_version

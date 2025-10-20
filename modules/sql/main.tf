@@ -1,13 +1,14 @@
-# Service Networking connection for Private IP
+# Service Networking connection for Private IP (managed only if manage_connection=true)
 resource "google_service_networking_connection" "private_vpc_connection" {
-  network                 = var.network_self_link
-  service                 = "servicenetworking.googleapis.com"
+  count                  = var.manage_connection ? 1 : 0
+  network                = var.network_self_link
+  service                = "servicenetworking.googleapis.com"
   reserved_peering_ranges = [var.allocated_range_name]
 }
 
 resource "random_password" "db_pass" {
-  length          = 16
-  special         = true
+  length           = 16
+  special          = true
   override_special = "!@#%^*-_=+"
 }
 
@@ -17,8 +18,8 @@ resource "google_sql_database_instance" "mysql" {
   database_version = var.database_version
 
   settings {
-    tier            = var.tier
-    disk_size       = var.disk_size_gb
+    tier      = var.tier
+    disk_size = var.disk_size_gb
     ip_configuration {
       ipv4_enabled    = false
       private_network = var.network_self_link
@@ -31,7 +32,7 @@ resource "google_sql_database_instance" "mysql" {
 
   deletion_protection = false
 
-  depends_on = [google_service_networking_connection.private_vpc_connection]
+  depends_on = var.manage_connection ? [google_service_networking_connection.private_vpc_connection] : []
 }
 
 resource "google_sql_database" "db" {

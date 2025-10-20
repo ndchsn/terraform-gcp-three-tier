@@ -40,9 +40,16 @@ Stack:
 ## Validasi (base)
 - VPC/Subnet:
   gcloud compute networks list
-  gcloud compute networks subnets list --filter="network=vpc-main"
+  gcloud compute networks list --filter="name=vpc-main"
+  gcloud compute networks describe vpc-main
+
 - NAT:
-  gcloud compute routers nats list --region=asia-southeast2
+  gcloud compute routers list \
+  --filter="region:asia-southeast2 AND network~vpc-main"
+  gcloud compute routers describe <router-name> --region=asia-southeast2
+  gcloud compute routers nats list --router=<router-name> --region=asia-southeast2
+  gcloud compute routers nats describe <nat-name> --router=<router-name> --region=asia-southeast2
+
 
 ## Validasi (dev)
 - GKE:

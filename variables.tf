@@ -52,3 +52,20 @@ variable "tags_allow_ssh_cidr" {
   type        = string
   default     = null
 }
+
+# Network management toggles (dev=true, stg/prod=false)
+variable "network_create_network" {
+  type        = bool
+  description = "Create the VPC (true) or use existing (false)"
+  default     = true
+}
+variable "network_manage_router_nat" {
+  type        = bool
+  description = "Create Cloud Router/NAT (true) or rely on existing (false)"
+  default     = true
+}
+variable "network_manage_psc" {
+  type        = bool
+  description = "Create reserved PSC range (true) or rely on existing (false)"
+  default     = true
+}

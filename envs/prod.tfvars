@@ -4,6 +4,10 @@ zone       = "asia-southeast2-a"
 env        = "prod"
 
 network_name = "vpc-main"
+# consume existing VPC; rely on NAT/PSC created by dev
+network_create_network    = false
+network_manage_router_nat = false
+network_manage_psc        = false
 
 tier_cidrs = {
   web = "10.2.1.0/24"
