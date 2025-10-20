@@ -6,9 +6,9 @@ env        = "stg"
 network_name = "vpc-main"
 
 tier_cidrs = {
-  web = "10.1.1.0/24"
-  app = "10.1.2.0/24"
-  db  = "10.1.3.0/24"
+  web = "10.4.1.0/24"
+  app = "10.4.2.0/24"
+  db  = "10.4.3.0/24"
 }
 
 gke = {

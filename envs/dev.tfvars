@@ -6,9 +6,9 @@ env        = "dev"
 network_name = "vpc-main"
 
 tier_cidrs = {
-  web = "10.0.1.0/24"
-  app = "10.0.2.0/24"
-  db  = "10.0.3.0/24"
+  web = "10.3.1.0/24"
+  app = "10.3.2.0/24"
+  db  = "10.3.3.0/24"
 }
 
 gke = {
