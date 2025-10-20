@@ -32,7 +32,7 @@ resource "google_sql_database_instance" "mysql" {
 
   deletion_protection = false
 
-  depends_on = var.manage_connection ? [google_service_networking_connection.private_vpc_connection] : []
+  depends_on = [google_service_networking_connection.private_vpc_connection]
 }
 
 resource "google_sql_database" "db" {
