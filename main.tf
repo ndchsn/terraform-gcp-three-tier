@@ -21,9 +21,9 @@ module "network" {
     { name = local.subnet_db_name,  ip_cidr_range = var.tier_cidrs.db,  region = var.region },
   ]
 
-  # Secondary ranges for GKE on the app subnet
-  app_pods_secondary_cidr     = "10.10.0.0/16"
-  app_services_secondary_cidr = "10.20.0.0/20"
+  # Secondary ranges for GKE on the app subnet (per env)
+  app_pods_secondary_cidr     = var.app_pods_secondary_cidr
+  app_services_secondary_cidr = var.app_services_secondary_cidr
 
   # Optional: allow SSH from your IP (tag based)
   allow_ssh_cidr = var.tags_allow_ssh_cidr

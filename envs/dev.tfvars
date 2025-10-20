@@ -20,6 +20,10 @@ gke = {
   kubernetes_version = null
 }
 
+# Choose non-overlapping secondary ranges for GKE (dev)
+app_pods_secondary_cidr     = "10.30.0.0/16"
+app_services_secondary_cidr = "10.31.0.0/20"
+
 sql = {
   instance_name     = "mysql-db-dev"
   database_name     = "appdb"

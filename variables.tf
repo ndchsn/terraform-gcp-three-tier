@@ -22,6 +22,16 @@ variable "tier_cidrs" {
   })
 }
 
+# GKE secondary ranges (per env)
+variable "app_pods_secondary_cidr" {
+  description = "CIDR for GKE pods secondary range"
+  type        = string
+}
+variable "app_services_secondary_cidr" {
+  description = "CIDR for GKE services secondary range"
+  type        = string
+}
+
 variable "gke" {
   description = "GKE settings"
   type = object({

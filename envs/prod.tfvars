@@ -24,6 +24,10 @@ gke = {
   kubernetes_version = null
 }
 
+# Choose non-overlapping secondary ranges for GKE (prod)
+app_pods_secondary_cidr     = "10.34.0.0/16"
+app_services_secondary_cidr = "10.35.0.0/20"
+
 sql = {
   instance_name     = "mysql-db-prod"
   database_name     = "appdb"
