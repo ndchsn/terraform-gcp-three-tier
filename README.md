@@ -37,17 +37,47 @@ Stack:
 - terraform plan -var-file="envs/dev.tfvars"
 - terraform apply -var-file="envs/dev.tfvars" -auto-approve
 
-## Validasi
+## Validasi (base)
 - VPC/Subnet:
   gcloud compute networks list
   gcloud compute networks subnets list --filter="network=vpc-main"
 - NAT:
   gcloud compute routers nats list --region=asia-southeast2
+
+## Validasi (dev)
 - GKE:
   gcloud container clusters get-credentials gke-app-dev --region asia-southeast2 --project mlpt-cloudteam-migration
   kubectl get nodes
 - Cloud SQL:
   gcloud sql instances describe mysql-db-dev
+
+## Quick start (stg)
+- terraform init -backend-config="backend.hcl"
+- terraform workspace new stg (sekali)
+- terraform workspace select stg
+- terraform plan -var-file="envs/stg.tfvars"
+- terraform apply -var-file="envs/stg.tfvars" -auto-approve
+
+## Validasi (stg)
+- GKE:
+  gcloud container clusters get-credentials gke-app-stg --region asia-southeast2 --project mlpt-cloudteam-migration
+  kubectl get nodes
+- Cloud SQL:
+  gcloud sql instances describe mysql-db-stg
+
+## Quick start (prod)
+- terraform init -backend-config="backend.hcl"
+- terraform workspace new prod (sekali)
+- terraform workspace select prod
+- terraform plan -var-file="envs/prod.tfvars"
+- terraform apply -var-file="envs/prod.tfvars" -auto-approve
+
+## Validasi (prod)
+- GKE:
+  gcloud container clusters get-credentials gke-app-prod --region asia-southeast2 --project mlpt-cloudteam-migration
+  kubectl get nodes
+- Cloud SQL:
+  gcloud sql instances describe mysql-db-prod
 
 ## Note
 - Terraform di repo ini membuat VPC.
