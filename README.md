@@ -97,3 +97,5 @@ Stack:
 
 ## Destroy
 - terraform destroy -var-file="envs/dev.tfvars" -auto-approve
+- terraform destroy -var-file="envs/stg.tfvars" -auto-approve
+- terraform destroy -var-file="envs/prod.tfvars" -auto-approve

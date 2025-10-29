@@ -27,6 +27,7 @@ resource "google_sql_database_instance" "mysql" {
     availability_type = var.availability_type
     backup_configuration {
       enabled = true
+      binary_log_enabled = true
     }
   }
 
