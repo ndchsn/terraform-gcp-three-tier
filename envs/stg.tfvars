@@ -18,8 +18,8 @@ tier_cidrs = {
 gke = {
   cluster_name       = "gke-app-stg"
   release_channel    = "REGULAR"
-  min_nodes          = 1
-  max_nodes          = 3
+  min_nodes          = 2
+  max_nodes          = 4
   machine_type       = "e2-standard-2"
   kubernetes_version = null
 }
