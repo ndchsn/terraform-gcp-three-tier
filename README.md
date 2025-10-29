@@ -1,5 +1,9 @@
 # Terraform GCP Three-Tier (GKE + Cloud SQL) - mlpt-cloudteam-migration
 
+## Deskripsi
+Jadi di sini mencoba membuat three tier aplikasi yang terpisah 3 environment (dev/stg/prod) menggunakan terraform.
+Untuk langkah-langkah di bawah dimulai dari environment dev, lalu lanjut stg, kemudian prod.
+
 Stack:
 - VPC + Subnets (web/app/db per environment)
 - Cloud NAT + Router
